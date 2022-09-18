@@ -41,25 +41,28 @@ namespace UrunYonet
                 key = false;
                 MessageBox.Show("Sifre boş bırakılamaz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (!String.IsNullOrEmpty(textBoxKullaniciAdi.Text) && !String.IsNullOrEmpty(textBoxSifre.Text))
+            if (key==true)
             {
-                Kullanicilar kullanicilar = dataModel.Giris(textBoxKullaniciAdi.Text, textBoxSifre.Text);
-                if (kullanicilar != null)
+                if (!String.IsNullOrEmpty(textBoxKullaniciAdi.Text) && !String.IsNullOrEmpty(textBoxSifre.Text))
                 {
-                    girisYap = true;
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Kullanıcı adı veya şifre doğru değil.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Kullanicilar kullanicilar = dataModel.Giris(textBoxKullaniciAdi.Text, textBoxSifre.Text);
+                    if (kullanicilar != null)
+                    {
+                        girisYap = true;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Kullanıcı adı veya şifre doğru değil.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
 
-        private void buttonKayitOl_Click(object sender, EventArgs e)
+        private void buttonSifremiUnuttum_Click(object sender, EventArgs e)
         {
-            KullaniciKayit kayitOl = new KullaniciKayit();
-            kayitOl.ShowDialog();
+            SifremiUnuttum sifremiUnuttum = new SifremiUnuttum();
+            sifremiUnuttum.ShowDialog();
         }
     }
 }

@@ -58,22 +58,19 @@
     <Compile Include="KullaniciGiris.Designer.cs">
       <DependentUpon>KullaniciGiris.cs</DependentUpon>
     </Compile>
-    <Compile Include="KullaniciKayit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="KullaniciKayit.Designer.cs">
-      <DependentUpon>KullaniciKayit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SifremiUnuttum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SifremiUnuttum.Designer.cs">
+      <DependentUpon>SifremiUnuttum.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AnaPanel.resx">
       <DependentUpon>AnaPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KullaniciGiris.resx">
       <DependentUpon>KullaniciGiris.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="KullaniciKayit.resx">
-      <DependentUpon>KullaniciKayit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -84,6 +81,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SifremiUnuttum.resx">
+      <DependentUpon>SifremiUnuttum.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

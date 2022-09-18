@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
 
 namespace DataAccsessLayer
 {
@@ -60,31 +63,43 @@ namespace DataAccsessLayer
                 con.Close();
             }
         }
-        #endregion
-        #region Ekle Metotları
-        public bool KullainiciEkle(Kullanicilar kullanicilar)
+        public Kullanicilar SifremiUnuttum(string KullaniciAdi, string eposta)
         {
             try
             {
-                cmd.CommandText = "INSERT INTO Kullanicilar(Adi,Soyadi,KullaniciAdi,Eposta,Sifre,CepTel,UyelikTarihi,DogumTarihi,IsDeleted) VALUES(@Adi,@Soyadi,@KullaniciAdi,@Eposta,@Sifre,@CepTel,@UyelikTarihi,@DogumTarihi,@IsDeleted)";
+                cmd.CommandText = "SELECT COUNT(*) FROM Kullanicilar WHERE KullaniciAdi=@KullaniciAdi AND Eposta=@Eposta AND IsDeleted=0";
                 cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@Adi", kullanicilar.Adi);
-                cmd.Parameters.AddWithValue("@Soyadi", kullanicilar.Soyadi);
-                cmd.Parameters.AddWithValue("@KullaniciAdi", kullanicilar.KullaniciAdi);
-                cmd.Parameters.AddWithValue("@Eposta", kullanicilar.Eposta);
-                cmd.Parameters.AddWithValue("@Sifre", kullanicilar.Sifre);
-                cmd.Parameters.AddWithValue("@CepTel", kullanicilar.CepTel);
-                cmd.Parameters.AddWithValue("@UyelikTarihi", kullanicilar.UyelikTarihi);
-                cmd.Parameters.AddWithValue("@DogumTarihi", kullanicilar.DogumTarihi);
-                cmd.Parameters.AddWithValue("@IsDeleted", kullanicilar.IsDeleted);
+                cmd.Parameters.AddWithValue("@KullaniciAdi", KullaniciAdi);
+                cmd.Parameters.AddWithValue("@Eposta", eposta);
                 con.Open();
-                cmd.ExecuteNonQuery();
-                return true;
+                int number = Convert.ToInt32(cmd.ExecuteScalar());
+                con.Close();
+                cmd.Parameters.Clear();
+                cmd.CommandText = "SELECT KullaniciID,KullaniciAdi,Eposta FROM Kullanicilar WHERE KullaniciAdi=@KullaniciAdi ";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@KullaniciAdi", KullaniciAdi);
+                con.Open();
+                if (number > 0)
+                {
+                    Kullanicilar kullanicilar = new Kullanicilar();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        kullanicilar.KullaniciID = reader.GetInt32(0);
+                        kullanicilar.KullaniciAdi = reader.GetString(1);
+                        kullanicilar.Eposta = reader.GetString(2);
+                    }
+                    return kullanicilar;
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch (Exception)
             {
 
-                throw;
+                return null;
             }
             finally
             {
@@ -92,16 +107,46 @@ namespace DataAccsessLayer
             }
         }
         #endregion
-        #region Validasyonlar
-        public string NullControl(string text)
+        #region Mail işlemleri
+        public bool MailGönder(string eposta, string otp)
         {
-            if (!String.IsNullOrEmpty(text))
+            try
             {
-                return text;
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress("sifre.gonder@hotmail.com");
+                mailMessage.To.Add(eposta);
+                mailMessage.Subject = "E Posta Şifre | UrunYonet";
+                mailMessage.Body = $"Tek kullanımlık şifreniz {otp}";
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Credentials = new NetworkCredential("sifre.gonder@hotmail.com", "sifregonder1234");
+                smtpClient.EnableSsl = true;
+                smtpClient.Port = 587;
+                smtpClient.Host = "smtp-mail.outlook.com";
+                smtpClient.Send(mailMessage);
+                return true;
             }
-            else
+            catch (Exception)
             {
-                return null;
+
+                return false;
+            }
+        }
+        #endregion
+        #region Update İşlemleri
+        public void KullanıcıSifreGüncelle(int kullaniciID, string otp)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Kullanicilar SET Sifre=@Sifre WHERE KullaniciID=@KullaniciID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@Sifre", otp);
+                cmd.Parameters.AddWithValue("@KullaniciID", kullaniciID);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                con.Close();
             }
         }
         #endregion

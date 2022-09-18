@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace UrunYonet
 {
-    public partial class KullaniciKayit : Form
+    public partial class OtpPanel : Form
     {
-        public KullaniciKayit()
+        public OtpPanel()
         {
             InitializeComponent();
-        }
-
-        private void buttonKullaniciKayit_Click(object sender, EventArgs e)
-        {
-            bool key = true;
-
         }
     }
 }
