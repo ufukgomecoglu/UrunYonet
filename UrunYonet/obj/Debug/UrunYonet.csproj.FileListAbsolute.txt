@@ -1,0 +1,16 @@
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\bin\Debug\UrunYonet.exe.config
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\bin\Debug\UrunYonet.exe
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\bin\Debug\UrunYonet.pdb
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.csproj.AssemblyReference.cache
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.csproj.SuggestedBindingRedirects.cache
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.Properties.Resources.resources
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.csproj.GenerateResource.cache
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.csproj.CoreCompileInputs.cache
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.exe
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.pdb
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.AnaPanel.resources
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.KullaniciGiris.resources
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\bin\Debug\DataAccsessLayer.dll
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\bin\Debug\DataAccsessLayer.pdb
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.csproj.CopyComplete
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.KullaniciKayit.resources
