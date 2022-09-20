@@ -46,6 +46,7 @@ namespace UrunYonet
                 timer1.Stop();
                 Random generator = new Random();
                 MessageBox.Show("Süre doldu yeniden şifre isteyin", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SifremiUnuttum.otp = null;
                 this.Close();
                 SifremiUnuttum sifremiUnuttum = new SifremiUnuttum();
                 sifremiUnuttum.Show();

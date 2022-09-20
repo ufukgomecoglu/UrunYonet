@@ -19,9 +19,8 @@ namespace UrunYonet
             InitializeComponent();
         }
 
-        private void AnaPanel_Load(object sender, EventArgs e)
+        private void TSMI_KategoriIslemleri_Click(object sender, EventArgs e)
         {
-            
 
         }
     }
