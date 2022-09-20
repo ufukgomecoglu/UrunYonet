@@ -14,6 +14,7 @@ namespace UrunYonet
     public partial class SifremiUnuttum : Form
     {
         public static int kullaniciID = 0;
+        public static string otp = "";
         DataModel dataModel = new DataModel();
         public SifremiUnuttum()
         {
@@ -51,13 +52,17 @@ namespace UrunYonet
             if (key==true)
             {
                 Random generator = new Random();
-                string otp = generator.Next(0, 1000000).ToString("D6");
+                otp = generator.Next(0, 1000000).ToString("D6");
                 dataModel.KullanıcıSifreGüncelle(kullaniciID, otp);
                 dataModel.MailGönder(eposta, otp);
                 this.Close();
-                OtpPanel otpPanel = new OtpPanel();
-                otpPanel.ShowDialog();
+                
             }
+        }
+        private void SifremiUnuttum_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            OtpPanel otpPanel = new OtpPanel();
+            otpPanel.Show();
         }
     }
 }

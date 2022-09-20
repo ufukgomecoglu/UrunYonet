@@ -30,6 +30,8 @@ namespace UrunYonet
                 dataModel.KullanıcıSifreGüncelle(SifremiUnuttum.kullaniciID, otp);
                 MessageBox.Show("Süre doldu yeniden şifre isteyin", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
+                SifremiUnuttum sifremiUnuttum = new SifremiUnuttum();
+                sifremiUnuttum.Show();
             }
         }
 
@@ -53,10 +55,20 @@ namespace UrunYonet
             }
         }
 
-        private void OtpPanel_FormClosed(object sender, FormClosedEventArgs e)
+        private void buttonSifreBelirle_Click(object sender, EventArgs e)
         {
-            SifremiUnuttum sifremiUnuttum = new SifremiUnuttum();
-            sifremiUnuttum.ShowDialog();
+            if (maskedTextBoxOtp.Text==SifremiUnuttum.otp)
+            {
+                timer1.Stop();
+                this.Close();
+                SifreBelirle sifreBelirle = new SifreBelirle();
+                sifreBelirle.Show();
+            }
+            else
+            {
+                MessageBox.Show("Şifre yanlış doğru şifreyi giriniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

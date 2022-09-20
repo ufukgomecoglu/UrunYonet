@@ -102,6 +102,7 @@
             this.Name = "SifremiUnuttum";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SifremiUnuttum";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SifremiUnuttum_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

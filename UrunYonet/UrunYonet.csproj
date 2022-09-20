@@ -66,6 +66,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SifreBelirle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SifreBelirle.Designer.cs">
+      <DependentUpon>SifreBelirle.cs</DependentUpon>
+    </Compile>
     <Compile Include="SifremiUnuttum.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SifreBelirle.resx">
+      <DependentUpon>SifreBelirle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SifremiUnuttum.resx">
       <DependentUpon>SifremiUnuttum.cs</DependentUpon>
     </EmbeddedResource>
