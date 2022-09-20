@@ -100,6 +100,7 @@
             this.ClientSize = new System.Drawing.Size(217, 111);
             this.Controls.Add(this.groupBox1);
             this.Name = "SifremiUnuttum";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SifremiUnuttum";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

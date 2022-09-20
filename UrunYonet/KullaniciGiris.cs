@@ -62,7 +62,10 @@ namespace UrunYonet
         private void buttonSifremiUnuttum_Click(object sender, EventArgs e)
         {
             SifremiUnuttum sifremiUnuttum = new SifremiUnuttum();
-            sifremiUnuttum.ShowDialog();
+            if (Application.OpenForms.OfType<SifremiUnuttum>().Count() == 0)
+            {
+                sifremiUnuttum.Show();
+            }
         }
     }
 }

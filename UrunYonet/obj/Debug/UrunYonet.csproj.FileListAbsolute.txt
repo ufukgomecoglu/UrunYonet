@@ -14,3 +14,4 @@ C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\bin\Debug\DataAccses
 C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\bin\Debug\DataAccsessLayer.pdb
 C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.csproj.CopyComplete
 C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.SifremiUnuttum.resources
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.OtpPanel.resources
