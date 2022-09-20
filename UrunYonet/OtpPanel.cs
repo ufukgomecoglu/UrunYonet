@@ -18,21 +18,9 @@ namespace UrunYonet
         int saniye = 60;
         public OtpPanel()
         {
-            DataModel dataModel = new DataModel();
+            
             InitializeComponent();
-            if (labelDakika.Text == "-1")
-            {
-                timer1.Stop();
-                labelDakika.Text = "00";
-                labelDakika.Text = "00";
-                Random generator = new Random();
-                string otp = generator.Next(0, 1000000).ToString("D6");
-                dataModel.KullanıcıSifreGüncelle(SifremiUnuttum.kullaniciID, otp);
-                MessageBox.Show("Süre doldu yeniden şifre isteyin", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-                SifremiUnuttum sifremiUnuttum = new SifremiUnuttum();
-                sifremiUnuttum.Show();
-            }
+            
         }
 
         private void OtpPanel_Load(object sender, EventArgs e)
@@ -52,6 +40,15 @@ namespace UrunYonet
                 dakika = dakika - 1;
                 labelDakika.Text = Convert.ToString(dakika);
                 saniye = 60;
+            }
+            if (dakika == 0)
+            {
+                timer1.Stop();
+                Random generator = new Random();
+                MessageBox.Show("Süre doldu yeniden şifre isteyin", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                SifremiUnuttum sifremiUnuttum = new SifremiUnuttum();
+                sifremiUnuttum.Show();
             }
         }
 

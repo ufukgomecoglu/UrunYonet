@@ -62,7 +62,7 @@ namespace UrunYonet
         private void buttonSifremiUnuttum_Click(object sender, EventArgs e)
         {
             SifremiUnuttum sifremiUnuttum = new SifremiUnuttum();
-            if (Application.OpenForms.OfType<SifremiUnuttum>().Count() == 0)
+            if (Application.OpenForms.OfType<SifremiUnuttum>().Count() == 0 && Application.OpenForms.OfType<SifreBelirle>().Count() == 0&& Application.OpenForms.OfType<OtpPanel>().Count() == 0)
             {
                 sifremiUnuttum.Show();
             }

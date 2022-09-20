@@ -15,6 +15,7 @@ namespace UrunYonet
     {
         public static int kullaniciID = 0;
         public static string otp = "";
+        public static string kullaniciAdi = "";
         DataModel dataModel = new DataModel();
         public SifremiUnuttum()
         {
@@ -42,6 +43,7 @@ namespace UrunYonet
                 {
                     eposta = kullanicilar.Eposta;
                     kullaniciID = kullanicilar.KullaniciID;
+                    kullaniciAdi = kullanicilar.KullaniciAdi;
                 }
                 else
                 {
@@ -53,16 +55,12 @@ namespace UrunYonet
             {
                 Random generator = new Random();
                 otp = generator.Next(0, 1000000).ToString("D6");
-                dataModel.KullanıcıSifreGüncelle(kullaniciID, otp);
                 dataModel.MailGönder(eposta, otp);
                 this.Close();
-                
+                OtpPanel otpPanel = new OtpPanel();
+                otpPanel.Show();
             }
         }
-        private void SifremiUnuttum_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            OtpPanel otpPanel = new OtpPanel();
-            otpPanel.Show();
-        }
+        
     }
 }

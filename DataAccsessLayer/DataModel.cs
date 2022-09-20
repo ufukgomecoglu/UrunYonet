@@ -133,7 +133,7 @@ namespace DataAccsessLayer
         }
         #endregion
         #region Update İşlemleri
-        public void KullanıcıSifreGüncelle(int kullaniciID, string otp)
+        public void KullaniciSifreGüncelle(int kullaniciID, string otp)
         {
             try
             {
