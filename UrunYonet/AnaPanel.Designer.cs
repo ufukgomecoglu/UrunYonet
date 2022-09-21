@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.TSMI_TedarikciIslemleri = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_KategoriIslemleri = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_UrunIslemleri = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_SiparisIslemleri = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,7 +39,6 @@
             this.TSMI_YapilanIslemler = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.TSMI_TedarikciIslemleri = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -56,9 +56,15 @@
             this.TSMI_YapilanIslemler});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // TSMI_TedarikciIslemleri
+            // 
+            this.TSMI_TedarikciIslemleri.Name = "TSMI_TedarikciIslemleri";
+            this.TSMI_TedarikciIslemleri.Size = new System.Drawing.Size(112, 20);
+            this.TSMI_TedarikciIslemleri.Text = "Tedarikci Islemleri";
             // 
             // TSMI_KategoriIslemleri
             // 
@@ -111,9 +117,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 439);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(984, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -123,17 +129,11 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
-            // TSMI_TedarikciIslemleri
-            // 
-            this.TSMI_TedarikciIslemleri.Name = "TSMI_TedarikciIslemleri";
-            this.TSMI_TedarikciIslemleri.Size = new System.Drawing.Size(112, 20);
-            this.TSMI_TedarikciIslemleri.Text = "Tedarikci Islemleri";
-            // 
             // AnaPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(984, 461);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;

@@ -191,6 +191,26 @@ namespace DataAccsessLayer
                 con.Close();
             }
         }
+        public bool KategoriGuncelle(int kategoriID)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Kategoriler SET IsDeleted= 1 Where KategoriID=@KategoriID";
+                cmd.Parameters.AddWithValue("@KategoriID", kategoriID);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         #endregion
         #region Listele İşlemleri
         public bool BeniHatirlaList()
@@ -215,6 +235,33 @@ namespace DataAccsessLayer
             }
         }
         public List<Kategori> KategoriListele()
+        {
+            try
+            {
+                List<Kategori> kategoris = new List<Kategori>();
+                cmd.CommandText = "SELECT * FROM Kategoriler WHERE IsDeleted=0";
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Kategori kategori = new Kategori();
+                    kategori.KategoriID = reader.GetInt32(0);
+                    kategori.KategoriAdi = reader.GetString(1);
+                    kategori.IsDeleted = reader.GetBoolean(2);
+                    kategoris.Add(kategori);
+                }
+                return kategoris;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public List<Kategori> KategoriListele(string text)
         {
             try
             {

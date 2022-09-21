@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UrunYonet
 {
@@ -29,7 +30,7 @@ namespace UrunYonet
             }
             if (key==true)
             {
-                dataModel.KategoriEkle(textBoxKategoriAdi.Text);
+                dataModel.KategoriEkle(textBoxKategoriAdi.Text.ToUpper());
                 textBoxKategoriAdi.Text = "";
                 MessageBox.Show("Kategori başarı ile eklendi", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -56,24 +57,26 @@ namespace UrunYonet
             listBoxKategori.DisplayMember = "KategoriAdi";
             listBoxKategori.ValueMember = "KategoriID";
         }
-
-        private void KategoriIslemleri_Load(object sender, EventArgs e)
+        private void buttonKategoriSil_Click(object sender, EventArgs e)
         {
-            if (dataModel.KategoriListele().Count != 0)
+            if (listBoxKategori.SelectedItem != null)
             {
-                listBoxKategori.DataSource = dataModel.KategoriListele(); ;
-                listBoxKategori.DisplayMember = "KategoriAdi";
-                listBoxKategori.ValueMember = "KategoriID";
+                if (dataModel.KategoriGuncelle(Convert.ToInt32(listBoxKategori.SelectedValue)))
+                {
+                    MessageBox.Show($"Kategori başarı ile silindi", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
-                listBoxKategori.Items.Add("Hiç kategori eklenmedi.");
+                MessageBox.Show("Lütfen Kategori listesinden kategori seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            listBoxKategori.DataSource = dataModel.KategoriListele(); ;
+            listBoxKategori.DisplayMember = "KategoriAdi";
+            listBoxKategori.ValueMember = "KategoriID";
         }
 
-        private void buttonKategoriSil_Click(object sender, EventArgs e)
-        {
+        
 
-        }
+       
     }
 }
