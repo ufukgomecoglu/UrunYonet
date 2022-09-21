@@ -92,6 +92,9 @@
     <EmbeddedResource Include="AnaPanel.resx">
       <DependentUpon>AnaPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="KategoriIslemleri.resx">
+      <DependentUpon>KategoriIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="KullaniciGiris.resx">
       <DependentUpon>KullaniciGiris.cs</DependentUpon>
     </EmbeddedResource>

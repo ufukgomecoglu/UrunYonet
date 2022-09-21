@@ -19,6 +19,9 @@ namespace DataAccsessLayer
             con = new SqlConnection(ConnectionString.ConStr);
             cmd = con.CreateCommand();
         }
+        #region Validasyonlar
+
+        #endregion
         #region Giriş Metodu
         public Kullanicilar Giris(string KullaniciAdi, string Sifre)
         {
@@ -133,7 +136,7 @@ namespace DataAccsessLayer
         }
         #endregion
         #region Update İşlemleri
-        public void KullaniciSifreGüncelle(int kullaniciID, string otp)
+        public void KullaniciSifreGuncelle(int kullaniciID, string otp)
         {
             try
             {
@@ -166,6 +169,28 @@ namespace DataAccsessLayer
                 con.Close();
             }
         }
+        public bool KategoriGuncelle(int kategoriID, string kategoriAdi)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Kategoriler SET KategoriAdi= @KategoriAdi Where KategoriID=@KategoriID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@KategoriAdi", kategoriAdi);
+                cmd.Parameters.AddWithValue("@KategoriID", kategoriID);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         #endregion
         #region Listele İşlemleri
         public bool BeniHatirlaList()
@@ -187,6 +212,56 @@ namespace DataAccsessLayer
             else
             {
                 return false;
+            }
+        }
+        public List<Kategori> KategoriListele()
+        {
+            try
+            {
+                List<Kategori> kategoris = new List<Kategori>();
+                cmd.CommandText = "SELECT * FROM Kategoriler WHERE IsDeleted=0";
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Kategori kategori = new Kategori();
+                    kategori.KategoriID = reader.GetInt32(0);
+                    kategori.KategoriAdi = reader.GetString(1);
+                    kategori.IsDeleted = reader.GetBoolean(2);
+                    kategoris.Add(kategori);
+                }
+                return kategoris;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        #endregion
+        #region Ekle İşlemleri
+        public bool KategoriEkle(string KategoriAdi)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO Kategoriler(KategoriAdi,Isdeleted) VALUES(@KategoriAdi,0)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@KategoriAdi", KategoriAdi);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
             }
         }
         #endregion

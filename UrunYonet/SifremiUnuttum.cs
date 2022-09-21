@@ -28,7 +28,7 @@ namespace UrunYonet
             bool key = true;
             if (textBoxKullaniciAdi.Text=="")
             {
-                MessageBox.Show("Sifre boş bırakılamaz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Kullanıcı adı boş bırakılamaz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 key = false;
             }
             if (textBoxEposta.Text=="")

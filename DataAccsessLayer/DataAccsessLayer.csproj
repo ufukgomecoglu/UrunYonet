@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AltKategori.cs" />
     <Compile Include="BeniHatirla.cs" />
     <Compile Include="ConnectionString.cs" />
     <Compile Include="DataModel.cs" />
+    <Compile Include="Kategori.cs" />
     <Compile Include="Kullanicilar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

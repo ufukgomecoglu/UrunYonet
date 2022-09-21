@@ -14,6 +14,7 @@ namespace UrunYonet
 {
     public partial class KullaniciGiris : Form
     {
+        public static string kullaniciAdi = "";
         bool girisYap = false;
         DataModel dataModel = new DataModel();
         public KullaniciGiris()
@@ -46,6 +47,7 @@ namespace UrunYonet
             {
                 if (!String.IsNullOrEmpty(textBoxKullaniciAdi.Text) && !String.IsNullOrEmpty(textBoxSifre.Text))
                 {
+                    kullaniciAdi =textBoxKullaniciAdi.Text;
                     Kullanicilar kullanicilar = dataModel.Giris(textBoxKullaniciAdi.Text, textBoxSifre.Text);
                     if (kullanicilar != null)
                     {
