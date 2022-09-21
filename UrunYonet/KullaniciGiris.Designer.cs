@@ -35,11 +35,13 @@
             this.textBoxKullaniciAdi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxBeniHatirla = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBoxBeniHatirla);
             this.groupBox1.Controls.Add(this.buttonSifremiUnuttum);
             this.groupBox1.Controls.Add(this.buttonGirisYap);
             this.groupBox1.Controls.Add(this.textBoxSifre);
@@ -48,7 +50,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(323, 140);
+            this.groupBox1.Size = new System.Drawing.Size(376, 136);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Kullanici Giriş Ekranı";
@@ -114,16 +116,28 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Kullanıcı Adı";
             // 
+            // checkBoxBeniHatirla
+            // 
+            this.checkBoxBeniHatirla.AutoSize = true;
+            this.checkBoxBeniHatirla.Location = new System.Drawing.Point(295, 62);
+            this.checkBoxBeniHatirla.Name = "checkBoxBeniHatirla";
+            this.checkBoxBeniHatirla.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxBeniHatirla.TabIndex = 2;
+            this.checkBoxBeniHatirla.Text = "Beni Hatırla";
+            this.checkBoxBeniHatirla.UseVisualStyleBackColor = true;
+            this.checkBoxBeniHatirla.Click += new System.EventHandler(this.checkBoxBeniHatirla_Click);
+            // 
             // KullaniciGiris
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 156);
+            this.ClientSize = new System.Drawing.Size(400, 154);
             this.Controls.Add(this.groupBox1);
             this.Name = "KullaniciGiris";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "KullaniciGiris";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.KullaniciGiris_FormClosed);
+            this.Load += new System.EventHandler(this.KullaniciGiris_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -139,5 +153,6 @@
         private System.Windows.Forms.TextBox textBoxKullaniciAdi;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBoxBeniHatirla;
     }
 }

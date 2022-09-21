@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +66,53 @@ namespace UrunYonet
             if (Application.OpenForms.OfType<SifremiUnuttum>().Count() == 0 && Application.OpenForms.OfType<SifreBelirle>().Count() == 0&& Application.OpenForms.OfType<OtpPanel>().Count() == 0)
             {
                 sifremiUnuttum.Show();
+            }
+        }
+
+        private void KullaniciGiris_Load(object sender, EventArgs e)
+        {
+            checkBoxBeniHatirla.Checked = dataModel.BeniHatirlaList();
+            if (checkBoxBeniHatirla.Checked == true)
+            {
+                StreamReader sr = new StreamReader(@"C:\UrunYonet\KullaniciHatirla.urunYonet");
+                textBoxKullaniciAdi.Text = sr.ReadLine();
+                textBoxSifre.Text = sr.ReadLine();
+                sr.Close();
+            }
+        }
+
+        private void checkBoxBeniHatirla_Click(object sender, EventArgs e)
+        {
+            if (checkBoxBeniHatirla.Checked == true)
+            {
+                dataModel.BeniHatirlaUpdate(true);
+            }
+            else
+            {
+                dataModel.BeniHatirlaUpdate(false);
+            }
+            if (checkBoxBeniHatirla.Checked == true)
+            {
+                DirectoryInfo di = new DirectoryInfo(@"C:\UrunYonet");
+                if (!di.Exists)
+                {
+                    di.Create();
+                }
+                FileInfo fi = new FileInfo(@"C:\UrunYonet\KullaniciHatirla.urunYonet");
+                if (!fi.Exists)
+                {
+                    fi.Create();
+                }
+                StreamWriter sw = new StreamWriter(@"C:\UrunYonet\KullaniciHatirla.urunYonet");
+                sw.WriteLine(textBoxKullaniciAdi.Text);
+                sw.WriteLine(textBoxSifre.Text);
+                sw.Close();
+            }
+            else
+            {
+                StreamWriter sw = new StreamWriter(@"C:\UrunYonet\KullaniciHatirla.urunYonet");
+                sw.WriteLine("");
+                sw.Close();
             }
         }
     }

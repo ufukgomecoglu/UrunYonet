@@ -149,6 +149,46 @@ namespace DataAccsessLayer
                 con.Close();
             }
         }
+        public void BeniHatirlaUpdate(bool hatirla)
+        {
+            if (hatirla==false)
+            {
+                cmd.CommandText = "UPDATE BeniHatirla Set Hatirla=0";
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            else
+            {
+                cmd.CommandText = "UPDATE BeniHatirla Set Hatirla=1";
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+        #endregion
+        #region Listele İşlemleri
+        public bool BeniHatirlaList()
+        {
+            cmd.CommandText = "SELECT * FROM BeniHatirla";
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            BeniHatirla beniHatirla = new BeniHatirla();
+            while (reader.Read())
+            {
+                
+                beniHatirla.Hetirla = reader.GetBoolean(0);
+            }
+            con.Close();
+            if (beniHatirla.Hetirla==true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
     }
 }
