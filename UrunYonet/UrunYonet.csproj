@@ -52,6 +52,12 @@
     <Compile Include="AnaPanel.Designer.cs">
       <DependentUpon>AnaPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="KategoriIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KategoriIslemleri.Designer.cs">
+      <DependentUpon>KategoriIslemleri.cs</DependentUpon>
+    </Compile>
     <Compile Include="KullaniciGiris.cs">
       <SubType>Form</SubType>
     </Compile>
