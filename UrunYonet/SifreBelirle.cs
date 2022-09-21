@@ -31,7 +31,7 @@ namespace UrunYonet
                 if (textBoxSifreTekrar.Text== textBoxSifre.Text)
                 {
                     dataModel.KullaniciSifreGuncelle(SifremiUnuttum.kullaniciID, textBoxSifre.Text);
-                    MessageBox.Show("Kullanıcı:"+SifremiUnuttum.kullaniciAdi +"\r Yeni şifreniz belirlendi." , "Şifre güncelleme", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Kullanıcı:"+SifremiUnuttum.kullaniciAdi +"\r Yeni şifreniz belirlendi." , "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else

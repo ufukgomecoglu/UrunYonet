@@ -32,11 +32,9 @@ namespace UrunYonet
             {
                 dataModel.KategoriEkle(textBoxKategoriAdi.Text.ToUpper());
                 textBoxKategoriAdi.Text = "";
-                MessageBox.Show("Kategori başarı ile eklendi", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Kategori başarı ile eklendi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            listBoxKategori.DataSource = dataModel.KategoriListele(); ;
-            listBoxKategori.DisplayMember = "KategoriAdi";
-            listBoxKategori.ValueMember = "KategoriID";
+            KategoriIslemleri_Load();
         }
 
         private void buttonKategoriGüncelle_Click(object sender, EventArgs e)
@@ -44,39 +42,114 @@ namespace UrunYonet
             
             if (listBoxKategori.SelectedItem != null)
             {
-                if (dataModel.KategoriGuncelle(Convert.ToInt32(listBoxKategori.SelectedValue), textBoxKategoriAdi.Text))
+                if (dataModel.KategoriGuncelle(Convert.ToInt32(listBoxKategori.SelectedValue), textBoxKategoriAdi.Text.ToUpper()))
                 {
-                    MessageBox.Show($"Kategori başarı ile güncellendi", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Kategori başarı ile güncellendi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
                 MessageBox.Show("Lütfen Kategori listesinden kategori seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            listBoxKategori.DataSource = dataModel.KategoriListele(); ;
-            listBoxKategori.DisplayMember = "KategoriAdi";
-            listBoxKategori.ValueMember = "KategoriID";
+            KategoriIslemleri_Load();
         }
         private void buttonKategoriSil_Click(object sender, EventArgs e)
         {
-            if (listBoxKategori.SelectedItem != null)
+            DialogResult dialogResult= MessageBox.Show("Kategoriyi silmek istediğinizden emin misiniz?", "Uyarı", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult== DialogResult.OK)
             {
-                if (dataModel.KategoriGuncelle(Convert.ToInt32(listBoxKategori.SelectedValue)))
+                if (listBoxKategori.SelectedItem != null)
                 {
-                    MessageBox.Show($"Kategori başarı ile silindi", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (dataModel.KategoriGuncelle(Convert.ToInt32(listBoxKategori.SelectedValue)))
+                    {
+                        MessageBox.Show($"Kategori başarı ile silindi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Lütfen Kategori listesinden kategori seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                KategoriIslemleri_Load();
             }
             else
             {
-                MessageBox.Show("Lütfen Kategori listesinden kategori seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"İşlem iptal edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            listBoxKategori.DataSource = dataModel.KategoriListele(); ;
-            listBoxKategori.DisplayMember = "KategoriAdi";
-            listBoxKategori.ValueMember = "KategoriID";
         }
 
-        
+        private void KategoriIslemleri_Load(object sender, EventArgs e)
+        {
+            if (dataModel.KategoriListele().Count!= 0)
+            {
+                listBoxKategori.DataSource = dataModel.KategoriListele(); ;
+                listBoxKategori.DisplayMember = "KategoriAdi";
+                listBoxKategori.ValueMember = "KategoriID";
+                comboBox1.DataSource = dataModel.KategoriListele();
+                comboBox1.DisplayMember = "KategoriAdi";
+                comboBox1.ValueMember = "KategoriID";
+            }
+            else
+            {
+                List<string> strings = new List<string>();
+                strings.Add("Henüz kategori eklenmedi");
+                listBoxKategori.DataSource = strings;
+            }
+            comboBox1.SelectedItem = null;
+            comboBox1.Text = "Lütfen Kategori seçiniz...";
+            if (comboBox1.SelectedItem== null)
+            {
+                textBoxAltKategoriAdi.Enabled = false;
+                buttonAltKategoriEkle.Enabled = false;
+                buttonAltKategoriGüncelle.Enabled = false;
+                buttonAltKategoriSil.Enabled = false;
+            }
+            else
+            {
+                textBoxAltKategoriAdi.Enabled = true;
+                buttonAltKategoriEkle.Enabled = true;
+                buttonAltKategoriGüncelle.Enabled = true;
+                buttonAltKategoriSil.Enabled = true;
+            }
+        }
+        private void KategoriIslemleri_Load()
+        {
+            if (dataModel.KategoriListele().Count != 0)
+            {
+                listBoxKategori.DataSource = dataModel.KategoriListele(); ;
+                listBoxKategori.DisplayMember = "KategoriAdi";
+                listBoxKategori.ValueMember = "KategoriID";
+                comboBox1.DataSource = dataModel.KategoriListele();
+                comboBox1.DisplayMember = "KategoriAdi";
+                comboBox1.ValueMember = "KategoriID";
+            }
+            else
+            {
+                List<string> strings = new List<string>();
+                strings.Add("Henüz kategori eklenmedi");
+                listBoxKategori.DataSource = strings;
+            }
+            if (comboBox1.SelectedItem == null)
+            {
+                textBoxAltKategoriAdi.Enabled = false;
+                buttonAltKategoriEkle.Enabled = false;
+                buttonAltKategoriGüncelle.Enabled = false;
+                buttonAltKategoriSil.Enabled = false;
+            }
+            else
+            {
+                textBoxAltKategoriAdi.Enabled = true;
+                buttonAltKategoriEkle.Enabled = true;
+                buttonAltKategoriGüncelle.Enabled = true;
+                buttonAltKategoriSil.Enabled = true;
+            }
+        }
 
-       
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxAltKategoriAdi.Enabled = true;
+            buttonAltKategoriEkle.Enabled = true;
+            buttonAltKategoriGüncelle.Enabled = true;
+            buttonAltKategoriSil.Enabled = true;
+        }
     }
 }

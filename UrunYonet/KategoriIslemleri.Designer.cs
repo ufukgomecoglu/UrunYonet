@@ -142,9 +142,9 @@
             this.groupBox3.Controls.Add(this.buttonAltKategoriEkle);
             this.groupBox3.Controls.Add(this.textBoxAltKategoriAdi);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(455, 13);
+            this.groupBox3.Location = new System.Drawing.Point(431, 13);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(417, 336);
+            this.groupBox3.Size = new System.Drawing.Size(441, 336);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kategori";
@@ -154,8 +154,9 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(98, 20);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
+            this.comboBox1.Size = new System.Drawing.Size(135, 21);
             this.comboBox1.TabIndex = 8;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -169,7 +170,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.listBoxAltKotegori);
-            this.groupBox4.Location = new System.Drawing.Point(215, 19);
+            this.groupBox4.Location = new System.Drawing.Point(239, 19);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(196, 311);
             this.groupBox4.TabIndex = 6;
@@ -241,6 +242,7 @@
             this.Name = "KategoriIslemleri";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KategoriIslemleri";
+            this.Load += new System.EventHandler(this.KategoriIslemleri_Load);
             this.groupBoxKategori.ResumeLayout(false);
             this.groupBoxKategori.PerformLayout();
             this.groupBox1.ResumeLayout(false);
