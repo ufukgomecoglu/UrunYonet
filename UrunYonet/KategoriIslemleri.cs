@@ -76,7 +76,6 @@ namespace UrunYonet
                 MessageBox.Show($"İşlem iptal edildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void KategoriIslemleri_Load(object sender, EventArgs e)
         {
             if (dataModel.KategoriListele().Count!= 0)
@@ -143,7 +142,6 @@ namespace UrunYonet
                 buttonAltKategoriSil.Enabled = true;
             }
         }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBoxAltKategoriAdi.Enabled = true;
