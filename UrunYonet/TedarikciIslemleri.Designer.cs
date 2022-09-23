@@ -215,6 +215,7 @@
             this.buttonGeriAl.TabIndex = 1;
             this.buttonGeriAl.Text = "Geri Al";
             this.buttonGeriAl.UseVisualStyleBackColor = true;
+            this.buttonGeriAl.Click += new System.EventHandler(this.buttonGeriAl_Click);
             // 
             // listBoxTumTedarikci
             // 

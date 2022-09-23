@@ -81,12 +81,15 @@ namespace UrunYonet
                 listBoxTedarikci.DisplayMember = "Adi";
                 listBoxTedarikci.ValueMember = "TedarikciID";
                 listBoxTedarikci.DataSource = dataModel.TedarikciListele();
+                listBoxTumTedarikci.ValueMember = "TedarikciID";
+                listBoxTumTedarikci.DataSource = dataModel.TedarikciListele();
             }
             else
             {
                 List<string> list = new List<string>();
                 list.Add("Henüz tedarikci eklenmedi.");
                 listBoxTedarikci.DataSource = list;
+                listBoxTumTedarikci.DataSource = list;
             }
             buttonSifirla_Click();
         }
@@ -97,10 +100,15 @@ namespace UrunYonet
                 listBoxTedarikci.DisplayMember = "Adi";
                 listBoxTedarikci.ValueMember = "TedarikciID";
                 listBoxTedarikci.DataSource = dataModel.TedarikciListele();
+                listBoxTumTedarikci.ValueMember = "TedarikciID";
+                listBoxTumTedarikci.DataSource = dataModel.TedarikciListele();
             }
             else
             {
-                listBoxTedarikci.Items.Add("Henüz tedarikci eklenmedi.");
+                List<string> list = new List<string>();
+                list.Add("Henüz tedarikci eklenmedi.");
+                listBoxTedarikci.DataSource = list;
+                listBoxTumTedarikci.DataSource = list;
             }
         }
 
@@ -177,8 +185,23 @@ namespace UrunYonet
         private void listBoxTumTedarikci_Format(object sender, ListControlConvertEventArgs e)
         {
             int iD = ((Tedarikci)e.ListItem).TedarikciID;
-            string ad = ((Tedarikci)e.ListItem).KategoriAdi;
+            string ad = ((Tedarikci)e.ListItem).Adi;
             e.Value = $"{iD} {ad}";
+        }
+
+        private void buttonGeriAl_Click(object sender, EventArgs e)
+        {
+            if (listBoxTumTedarikci.SelectedItem!=null)
+            {
+                dataModel.TedarikciGuncelleGeriAl(Convert.ToInt32(listBoxTumTedarikci.SelectedValue));
+                MessageBox.Show($" Tedarikci başarı ile aktifleştirildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataModel.TedarikciYapilanIslemEkle(KullaniciGiris.kullaniciID, Convert.ToInt32(listBoxTedarikci.SelectedValue), $"{KullaniciGiris.kullaniciAdi}  {Convert.ToInt32(listBoxTedarikci.SelectedValue)} tedarikçiyi aktifleştirildi.");
+            }
+            else
+            {
+                MessageBox.Show("Lütfen tüm tedarikçi listesinden tedarikçi seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            TedarikciIslemleri_Load();
         }
     }
 }

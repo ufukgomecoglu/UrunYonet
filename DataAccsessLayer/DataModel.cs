@@ -343,6 +343,27 @@ namespace DataAccsessLayer
                 con.Close();
             }
         }
+        public bool TedarikciGuncelleGeriAl(int tedariciID)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Tedarikciler SET IsDeleted=0 WHERE TedarikciID=@TedarikciID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@TedarikciID", tedariciID);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         #endregion
         #region Listele İşlemleri
         public bool BeniHatirlaList()
