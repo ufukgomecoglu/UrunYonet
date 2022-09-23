@@ -89,6 +89,12 @@
     <Compile Include="SifremiUnuttum.Designer.cs">
       <DependentUpon>SifremiUnuttum.cs</DependentUpon>
     </Compile>
+    <Compile Include="TedarikciIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TedarikciIslemleri.Designer.cs">
+      <DependentUpon>TedarikciIslemleri.cs</DependentUpon>
+    </Compile>
     <Compile Include="YapilanIslemlemler.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SifremiUnuttum.resx">
       <DependentUpon>SifremiUnuttum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TedarikciIslemleri.resx">
+      <DependentUpon>TedarikciIslemleri.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

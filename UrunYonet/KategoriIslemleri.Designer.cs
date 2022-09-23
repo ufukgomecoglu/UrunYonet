@@ -154,7 +154,7 @@
             this.groupBox3.Size = new System.Drawing.Size(441, 336);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Kategori";
+            this.groupBox3.Text = "Alt Kategori";
             // 
             // comboBox1
             // 

@@ -297,6 +297,52 @@ namespace DataAccsessLayer
                 con.Close();
             }
         }
+        public bool TedarikciGuncelle(int tedariciID,string adi,string tel,string eposta, string yetkiliAdi )
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Tedarikciler SET Adi=@Adi,Tel=@Tel,Eposta=@Eposta,YetkiliAdi=@YetkiliAdi WHERE TedarikciID=@TedarikciID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@Adi", adi);
+                cmd.Parameters.AddWithValue("@Tel", tel);
+                cmd.Parameters.AddWithValue("Eposta", eposta);
+                cmd.Parameters.AddWithValue("@YetkiliAdi", yetkiliAdi);
+                cmd.Parameters.AddWithValue("@TedarikciID", tedariciID);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool TedarikciGuncelle(int tedariciID)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Tedarikciler SET IsDeleted=1 WHERE TedarikciID=@TedarikciID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@TedarikciID", tedariciID);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         #endregion
         #region Listele İşlemleri
         public bool BeniHatirlaList()
@@ -434,6 +480,70 @@ namespace DataAccsessLayer
                 con.Close();
             }
         }
+        public List<Tedarikci> TedarikciListele()
+        {
+            try
+            {
+                List<Tedarikci> tedarikcis = new List<Tedarikci>();
+                cmd.CommandText = "SELECT * FROM Tedarikciler WHERE IsDeleted=0";
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Tedarikci tedarikci = new Tedarikci();
+                    tedarikci.TedarikciID = reader.GetInt32(0);
+                    tedarikci.Adi = reader.GetString(1);
+                    tedarikci.Tel = reader.GetString(2);
+                    tedarikci.Eposta = reader.GetString(3);
+                    tedarikci.YetkiliAdi = reader.GetString(4);
+                    tedarikci.IsDeleted = reader.GetBoolean(5);
+                    tedarikcis.Add(tedarikci);
+                }
+                return tedarikcis;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public List<Tedarikci> TedarikciListele(int tedarikciID)
+        {
+            try
+            {
+                List<Tedarikci> tedarikcis = new List<Tedarikci>();
+                cmd.CommandText = "SELECT * FROM Tedarikciler WHERE IsDeleted=0 AND TedarikciID = @TedarikciID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@TedarikciID", tedarikciID);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Tedarikci tedarikci = new Tedarikci();
+                    tedarikci.TedarikciID = reader.GetInt32(0);
+                    tedarikci.Adi = reader.GetString(1);
+                    tedarikci.Tel = reader.GetString(2);
+                    tedarikci.Eposta = reader.GetString(3);
+                    tedarikci.YetkiliAdi = reader.GetString(4);
+                    tedarikci.IsDeleted = reader.GetBoolean(5);
+                    tedarikcis.Add(tedarikci);
+                }
+                return tedarikcis;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         #endregion
         #region Ekle İşlemleri
         public void KategoriEkle(string KategoriAdi)
@@ -494,6 +604,43 @@ namespace DataAccsessLayer
                 cmd.Parameters.AddWithValue("@Tarih", DateTime.Now);
                 cmd.Parameters.AddWithValue("@KullaniciID", kullaniciID);
                 cmd.Parameters.AddWithValue("@AltKategoriID", altKategoriID);
+                cmd.Parameters.AddWithValue("@Aciklama", aciklama);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void TedarikciEkle(string adi, string telefon , string eposta, string yetkiliAdi )
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO Tedarikciler(Adi,Tel,Eposta,YetkiliAdi,IsDeleted) VALUES(@Adi,@Tel,@Eposta,@YetkiliAdi,0)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@Adi", adi);
+                cmd.Parameters.AddWithValue("@Tel", telefon);
+                cmd.Parameters.AddWithValue("@Eposta", eposta);
+                cmd.Parameters.AddWithValue("@YetkiliAdi", yetkiliAdi);
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void TedarikciYapilanIslemEkle(int kullaniciID, int tedarikciID, string aciklama)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO YapilanIslemler(Tarih,KullaniciID,TedarikciID,Aciklama) VALUES(@Tarih,@KullaniciID,@TedarikciID,@Aciklama)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@Tarih", DateTime.Now);
+                cmd.Parameters.AddWithValue("@KullaniciID", kullaniciID);
+                cmd.Parameters.AddWithValue("@TedarikciID", tedarikciID);
                 cmd.Parameters.AddWithValue("@Aciklama", aciklama);
                 con.Open();
                 cmd.ExecuteNonQuery();

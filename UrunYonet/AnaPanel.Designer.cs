@@ -65,6 +65,7 @@
             this.TSMI_TedarikciIslemleri.Name = "TSMI_TedarikciIslemleri";
             this.TSMI_TedarikciIslemleri.Size = new System.Drawing.Size(112, 20);
             this.TSMI_TedarikciIslemleri.Text = "Tedarikci Islemleri";
+            this.TSMI_TedarikciIslemleri.Click += new System.EventHandler(this.TSMI_TedarikciIslemleri_Click);
             // 
             // TSMI_KategoriIslemleri
             // 
