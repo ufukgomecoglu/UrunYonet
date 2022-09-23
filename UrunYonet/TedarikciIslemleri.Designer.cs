@@ -223,6 +223,7 @@
             this.listBoxTumTedarikci.Name = "listBoxTumTedarikci";
             this.listBoxTumTedarikci.Size = new System.Drawing.Size(373, 173);
             this.listBoxTumTedarikci.TabIndex = 0;
+            this.listBoxTumTedarikci.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.listBoxTumTedarikci_Format);
             // 
             // TedarikciIslemleri
             // 

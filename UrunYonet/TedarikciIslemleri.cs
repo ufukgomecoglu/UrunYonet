@@ -173,5 +173,12 @@ namespace UrunYonet
             }
             TedarikciIslemleri_Load();
         }
+
+        private void listBoxTumTedarikci_Format(object sender, ListControlConvertEventArgs e)
+        {
+            int iD = ((Tedarikci)e.ListItem).TedarikciID;
+            string ad = ((Tedarikci)e.ListItem).KategoriAdi;
+            e.Value = $"{iD} {ad}";
+        }
     }
 }
