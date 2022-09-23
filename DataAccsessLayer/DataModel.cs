@@ -211,6 +211,48 @@ namespace DataAccsessLayer
                 con.Close();
             }
         }
+        public bool AltKategoriGuncelle(int altKategoriID, string altKategoriAdi)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE AltKategoriler SET AltKategoriAdi= @AltKategoriAdi Where AltKategoriID=@AltKategoriID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@AltKategoriAdi", altKategoriAdi);
+                cmd.Parameters.AddWithValue("@AltKategoriID", altKategoriID);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool AltKategoriGuncelle(int altKategoriID)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE AltKategoriler SET IsDeleted= 1 Where AltKategoriID=@AltKategoriID";
+                cmd.Parameters.AddWithValue("@AltKategoriID", altKategoriID);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         #endregion
         #region Listele İşlemleri
         public bool BeniHatirlaList()
@@ -261,26 +303,30 @@ namespace DataAccsessLayer
                 con.Close();
             }
         }
-        public List<Kategori> KategoriListele(string text)
+        public List<AltKategori> KategoriyeGöreAltkategoriListele(int kategoriID)
         {
             try
             {
-                List<Kategori> kategoris = new List<Kategori>();
-                cmd.CommandText = "SELECT * FROM Kategoriler WHERE IsDeleted=0";
+                List<AltKategori> altKategoris = new List<AltKategori>();
+                cmd.CommandText = "SELECT * FROM AltKategoriler WHERE IsDeleted=0 AND KategoriID = @KategoriID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@KategoriID", kategoriID);
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Kategori kategori = new Kategori();
-                    kategori.KategoriID = reader.GetInt32(0);
-                    kategori.KategoriAdi = reader.GetString(1);
-                    kategori.IsDeleted = reader.GetBoolean(2);
-                    kategoris.Add(kategori);
+                    AltKategori altKategori = new AltKategori();
+                    altKategori.AltKategoriID = reader.GetInt32(0);
+                    altKategori.KategoriID = reader.GetInt32(1);
+                    altKategori.AltKategoriAdi = reader.GetString(2);
+                    altKategori.IsDeleted = reader.GetBoolean(3);
+                    altKategoris.Add(altKategori);
                 }
-                return kategoris;
+                return altKategoris;
             }
             catch (Exception)
             {
+
                 return null;
             }
             finally
@@ -290,7 +336,7 @@ namespace DataAccsessLayer
         }
         #endregion
         #region Ekle İşlemleri
-        public bool KategoriEkle(string KategoriAdi)
+        public void KategoriEkle(string KategoriAdi)
         {
             try
             {
@@ -299,12 +345,22 @@ namespace DataAccsessLayer
                 cmd.Parameters.AddWithValue("@KategoriAdi", KategoriAdi);
                 con.Open();
                 cmd.ExecuteNonQuery();
-                return true;
             }
-            catch (Exception)
+            finally
             {
-
-                return false;
+                con.Close();
+            }
+        }
+        public void AltKategoriEkle(int kategoriID,string altKategoriAdi)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO AltKategoriler(KategoriID,AltKategoriAdi,IsDeleted) VALUES(@KategoriID,@AltKategoriAdi,0)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@KategoriID",kategoriID);
+                cmd.Parameters.AddWithValue("@AltKategoriAdi", altKategoriAdi);
+                con.Open();
+                cmd.ExecuteNonQuery();
             }
             finally
             {

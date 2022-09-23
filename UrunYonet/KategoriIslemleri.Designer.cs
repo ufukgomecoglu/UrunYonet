@@ -194,7 +194,7 @@
             this.buttonAltKategoriSil.TabIndex = 4;
             this.buttonAltKategoriSil.Text = "Sil";
             this.buttonAltKategoriSil.UseVisualStyleBackColor = true;
-            this.buttonAltKategoriSil.Click += new System.EventHandler(this.buttonKategoriSil_Click);
+            this.buttonAltKategoriSil.Click += new System.EventHandler(this.buttonAltKategoriSil_Click);
             // 
             // buttonAltKategoriGüncelle
             // 
@@ -204,7 +204,7 @@
             this.buttonAltKategoriGüncelle.TabIndex = 3;
             this.buttonAltKategoriGüncelle.Text = "Güncelle";
             this.buttonAltKategoriGüncelle.UseVisualStyleBackColor = true;
-            this.buttonAltKategoriGüncelle.Click += new System.EventHandler(this.buttonKategoriGüncelle_Click);
+            this.buttonAltKategoriGüncelle.Click += new System.EventHandler(this.buttonAltKategoriGüncelle_Click);
             // 
             // buttonAltKategoriEkle
             // 
@@ -214,7 +214,7 @@
             this.buttonAltKategoriEkle.TabIndex = 2;
             this.buttonAltKategoriEkle.Text = "Ekle";
             this.buttonAltKategoriEkle.UseVisualStyleBackColor = true;
-            this.buttonAltKategoriEkle.Click += new System.EventHandler(this.buttonKategoriEkle_Click);
+            this.buttonAltKategoriEkle.Click += new System.EventHandler(this.buttonAltKategoriEkle_Click);
             // 
             // textBoxAltKategoriAdi
             // 

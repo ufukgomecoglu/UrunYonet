@@ -11,5 +11,6 @@ namespace DataAccsessLayer
         public int AltKategoriID { get; set; }
         public int KategoriID { get; set; }
         public string AltKategoriAdi { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
