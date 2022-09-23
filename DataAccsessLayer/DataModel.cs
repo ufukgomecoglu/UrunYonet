@@ -196,6 +196,28 @@ namespace DataAccsessLayer
             try
             {
                 cmd.CommandText = "UPDATE Kategoriler SET IsDeleted= 1 Where KategoriID=@KategoriID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@KategoriID", kategoriID);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool KategoriGuncelleGeriAl(int kategoriID)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE Kategoriler SET IsDeleted= 0 Where KategoriID=@KategoriID";
+                cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@KategoriID", kategoriID);
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -238,6 +260,28 @@ namespace DataAccsessLayer
             try
             {
                 cmd.CommandText = "UPDATE AltKategoriler SET IsDeleted= 1 Where AltKategoriID=@AltKategoriID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@AltKategoriID", altKategoriID);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public bool AltKategoriGuncelleGeriAl(int altKategoriID)
+        {
+            try
+            {
+                cmd.CommandText = "UPDATE AltKategoriler SET IsDeleted= 0 Where AltKategoriID=@AltKategoriID";
+                cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@AltKategoriID", altKategoriID);
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -303,6 +347,33 @@ namespace DataAccsessLayer
                 con.Close();
             }
         }
+        public List<Kategori> TumKategoriListele()
+        {
+            try
+            {
+                List<Kategori> kategoris = new List<Kategori>();
+                cmd.CommandText = "SELECT * FROM Kategoriler ";
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Kategori kategori = new Kategori();
+                    kategori.KategoriID = reader.GetInt32(0);
+                    kategori.KategoriAdi = reader.GetString(1);
+                    kategori.IsDeleted = reader.GetBoolean(2);
+                    kategoris.Add(kategori);
+                }
+                return kategoris;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         public List<AltKategori> KategoriyeGöreAltkategoriListele(int kategoriID)
         {
             try
@@ -311,6 +382,35 @@ namespace DataAccsessLayer
                 cmd.CommandText = "SELECT * FROM AltKategoriler WHERE IsDeleted=0 AND KategoriID = @KategoriID";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@KategoriID", kategoriID);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    AltKategori altKategori = new AltKategori();
+                    altKategori.AltKategoriID = reader.GetInt32(0);
+                    altKategori.KategoriID = reader.GetInt32(1);
+                    altKategori.AltKategoriAdi = reader.GetString(2);
+                    altKategori.IsDeleted = reader.GetBoolean(3);
+                    altKategoris.Add(altKategori);
+                }
+                return altKategoris;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public List<AltKategori> AltkategoriListele()
+        {
+            try
+            {
+                List<AltKategori> altKategoris = new List<AltKategori>();
+                cmd.CommandText = "SELECT * FROM AltKategoriler ";
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -359,6 +459,42 @@ namespace DataAccsessLayer
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@KategoriID",kategoriID);
                 cmd.Parameters.AddWithValue("@AltKategoriAdi", altKategoriAdi);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void KategoriYapilanIslemEkle(int kullaniciID,int kategoriID,string aciklama)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO YapilanIslemler(Tarih,KullaniciID,KategoriID,Aciklama) VALUES(@Tarih,@KullaniciID,@KategoriID,@Aciklama)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@Tarih", DateTime.Now);
+                cmd.Parameters.AddWithValue("@KullaniciID", kullaniciID);
+                cmd.Parameters.AddWithValue("@KategoriID", kategoriID);
+                cmd.Parameters.AddWithValue("@Aciklama", aciklama);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public void AltkategoriYapilanIslemEkle(int kullaniciID, int altKategoriID, string aciklama)
+        {
+            try
+            {
+                cmd.CommandText = "INSERT INTO YapilanIslemler(Tarih,KullaniciID,AltKategoriID,Aciklama) VALUES(@Tarih,@KullaniciID,@AltKategoriID,@Aciklama)";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@Tarih", DateTime.Now);
+                cmd.Parameters.AddWithValue("@KullaniciID", kullaniciID);
+                cmd.Parameters.AddWithValue("@AltKategoriID", altKategoriID);
+                cmd.Parameters.AddWithValue("@Aciklama", aciklama);
                 con.Open();
                 cmd.ExecuteNonQuery();
             }

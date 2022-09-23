@@ -46,10 +46,18 @@
             this.buttonAltKategoriEkle = new System.Windows.Forms.Button();
             this.textBoxAltKategoriAdi = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonKategoriGeriAl = new System.Windows.Forms.Button();
+            this.listBoxTumKategoriListesi = new System.Windows.Forms.ListBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.buttonAltKategoriGeriAl = new System.Windows.Forms.Button();
+            this.listBoxTumAltKategoriListesi = new System.Windows.Forms.ListBox();
             this.groupBoxKategori.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxKategori
@@ -82,7 +90,6 @@
             this.listBoxKategori.FormattingEnabled = true;
             this.listBoxKategori.Location = new System.Drawing.Point(6, 13);
             this.listBoxKategori.Name = "listBoxKategori";
-            this.listBoxKategori.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBoxKategori.Size = new System.Drawing.Size(174, 290);
             this.listBoxKategori.TabIndex = 1;
             // 
@@ -182,7 +189,6 @@
             this.listBoxAltKotegori.FormattingEnabled = true;
             this.listBoxAltKotegori.Location = new System.Drawing.Point(6, 13);
             this.listBoxAltKotegori.Name = "listBoxAltKotegori";
-            this.listBoxAltKotegori.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBoxAltKotegori.Size = new System.Drawing.Size(184, 290);
             this.listBoxAltKotegori.TabIndex = 1;
             // 
@@ -232,11 +238,73 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Alt Kategori Adı ";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.buttonKategoriGeriAl);
+            this.groupBox2.Controls.Add(this.listBoxTumKategoriListesi);
+            this.groupBox2.Location = new System.Drawing.Point(13, 355);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(412, 247);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tüm Kategori Listesi";
+            // 
+            // buttonKategoriGeriAl
+            // 
+            this.buttonKategoriGeriAl.Location = new System.Drawing.Point(169, 210);
+            this.buttonKategoriGeriAl.Name = "buttonKategoriGeriAl";
+            this.buttonKategoriGeriAl.Size = new System.Drawing.Size(75, 23);
+            this.buttonKategoriGeriAl.TabIndex = 1;
+            this.buttonKategoriGeriAl.Text = "Geri Al";
+            this.buttonKategoriGeriAl.UseVisualStyleBackColor = true;
+            this.buttonKategoriGeriAl.Click += new System.EventHandler(this.buttonKategoriGeriAl_Click);
+            // 
+            // listBoxTumKategoriListesi
+            // 
+            this.listBoxTumKategoriListesi.FormattingEnabled = true;
+            this.listBoxTumKategoriListesi.Location = new System.Drawing.Point(11, 18);
+            this.listBoxTumKategoriListesi.Name = "listBoxTumKategoriListesi";
+            this.listBoxTumKategoriListesi.Size = new System.Drawing.Size(395, 186);
+            this.listBoxTumKategoriListesi.TabIndex = 0;
+            this.listBoxTumKategoriListesi.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.listBoxTumKategoriListesi_Format);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.buttonAltKategoriGeriAl);
+            this.groupBox5.Controls.Add(this.listBoxTumAltKategoriListesi);
+            this.groupBox5.Location = new System.Drawing.Point(431, 355);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(441, 247);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Tüm Alt Kategori Listesi";
+            // 
+            // buttonAltKategoriGeriAl
+            // 
+            this.buttonAltKategoriGeriAl.Location = new System.Drawing.Point(189, 210);
+            this.buttonAltKategoriGeriAl.Name = "buttonAltKategoriGeriAl";
+            this.buttonAltKategoriGeriAl.Size = new System.Drawing.Size(75, 23);
+            this.buttonAltKategoriGeriAl.TabIndex = 1;
+            this.buttonAltKategoriGeriAl.Text = "Geri Al";
+            this.buttonAltKategoriGeriAl.UseVisualStyleBackColor = true;
+            this.buttonAltKategoriGeriAl.Click += new System.EventHandler(this.buttonAltKategoriGeriAl_Click);
+            // 
+            // listBoxTumAltKategoriListesi
+            // 
+            this.listBoxTumAltKategoriListesi.FormattingEnabled = true;
+            this.listBoxTumAltKategoriListesi.Location = new System.Drawing.Point(11, 18);
+            this.listBoxTumAltKategoriListesi.Name = "listBoxTumAltKategoriListesi";
+            this.listBoxTumAltKategoriListesi.Size = new System.Drawing.Size(424, 186);
+            this.listBoxTumAltKategoriListesi.TabIndex = 0;
+            this.listBoxTumAltKategoriListesi.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.listBoxTumAltKategoriListesi_Format);
+            // 
             // KategoriIslemleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 361);
+            this.ClientSize = new System.Drawing.Size(884, 614);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBoxKategori);
             this.Name = "KategoriIslemleri";
@@ -249,6 +317,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -273,5 +343,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button buttonKategoriGeriAl;
+        private System.Windows.Forms.ListBox listBoxTumKategoriListesi;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button buttonAltKategoriGeriAl;
+        private System.Windows.Forms.ListBox listBoxTumAltKategoriListesi;
     }
 }

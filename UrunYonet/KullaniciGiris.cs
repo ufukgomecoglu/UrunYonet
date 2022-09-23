@@ -15,6 +15,7 @@ namespace UrunYonet
     public partial class KullaniciGiris : Form
     {
         public static string kullaniciAdi = "";
+        public static int  kullaniciID = 0;
         bool girisYap = false;
         DataModel dataModel = new DataModel();
         public KullaniciGiris()
@@ -51,6 +52,7 @@ namespace UrunYonet
                     Kullanicilar kullanicilar = dataModel.Giris(textBoxKullaniciAdi.Text, textBoxSifre.Text);
                     if (kullanicilar != null)
                     {
+                        kullaniciID = kullanicilar.KullaniciID;
                         girisYap = true;
                         this.Close();
                     }

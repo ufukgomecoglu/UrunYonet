@@ -89,6 +89,12 @@
     <Compile Include="SifremiUnuttum.Designer.cs">
       <DependentUpon>SifremiUnuttum.cs</DependentUpon>
     </Compile>
+    <Compile Include="YapilanIslemlemler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YapilanIslemlemler.Designer.cs">
+      <DependentUpon>YapilanIslemlemler.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AnaPanel.resx">
       <DependentUpon>AnaPanel.cs</DependentUpon>
     </EmbeddedResource>
