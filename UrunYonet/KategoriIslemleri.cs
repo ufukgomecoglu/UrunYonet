@@ -47,7 +47,7 @@ namespace UrunYonet
         private void buttonKategoriGüncelle_Click(object sender, EventArgs e)
         {
             
-            if (listBoxKategori.SelectedItem != null)
+            if (listBoxKategori.SelectedItem != null && listBoxKategori.SelectedValue.ToString()!= "Henüz kategori eklenmedi")
             {
                 if (dataModel.KategoriGuncelle(Convert.ToInt32(listBoxKategori.SelectedValue), textBoxKategoriAdi.Text.ToUpper()))
                 {
@@ -67,7 +67,7 @@ namespace UrunYonet
             DialogResult dialogResult= MessageBox.Show("Kategoriyi silmek istediğinizden emin misiniz?", "Uyarı", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialogResult== DialogResult.OK)
             {
-                if (listBoxKategori.SelectedItem != null)
+                if (listBoxKategori.SelectedItem != null && listBoxKategori.SelectedValue.ToString() != "Henüz kategori eklenmedi")
                 {
                     if (dataModel.KategoriGuncelle(Convert.ToInt32(listBoxKategori.SelectedValue)))
                     {
@@ -235,7 +235,7 @@ namespace UrunYonet
 
         private void buttonAltKategoriGüncelle_Click(object sender, EventArgs e)
         {
-            if (listBoxAltKotegori.SelectedItem != null)
+            if (listBoxAltKotegori.SelectedItem != null && listBoxAltKotegori.SelectedValue.ToString() != "Henüz seçtiğiniz kategoriye alt kategori eklenmedi")
             {
                 if (dataModel.AltKategoriGuncelle(Convert.ToInt32(listBoxAltKotegori.SelectedValue), textBoxAltKategoriAdi.Text.ToUpper()))
                 {
@@ -260,7 +260,7 @@ namespace UrunYonet
             DialogResult dialogResult = MessageBox.Show("Alt Kategoriyi silmek istediğinizden emin misiniz?", "Uyarı", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.OK)
             {
-                if (listBoxAltKotegori.SelectedItem != null)
+                if (listBoxAltKotegori.SelectedItem != null && listBoxAltKotegori.SelectedValue.ToString() != "\"Henüz seçtiğiniz kategoriye alt kategori eklenmedi\"")
                 {
                     if (dataModel.AltKategoriGuncelle(Convert.ToInt32(listBoxAltKotegori.SelectedValue)))
                     {

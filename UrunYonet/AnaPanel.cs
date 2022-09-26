@@ -59,5 +59,25 @@ namespace UrunYonet
                 frm.Show();
             }
         }
+
+        private void TSMI_UrunIslemleri_Click(object sender, EventArgs e)
+        {
+            Form[] AcikFormlar = this.MdiChildren;
+            bool acikmi = false;
+            foreach (Form item in AcikFormlar)
+            {
+                if (item.GetType() == typeof(UrunIslemleri))
+                {
+                    acikmi = true;
+                    item.Activate();
+                }
+            }
+            if (acikmi == false)
+            {
+                UrunIslemleri frm = new UrunIslemleri();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
     }
 }

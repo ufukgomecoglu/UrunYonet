@@ -76,19 +76,27 @@ namespace UrunYonet
 
         private void TedarikciIslemleri_Load(object sender, EventArgs e)
         {
-            if (dataModel.TedarikciListele().Count!=0)
+            if (dataModel.TedarikciListele().Count != 0)
             {
                 listBoxTedarikci.DisplayMember = "Adi";
                 listBoxTedarikci.ValueMember = "TedarikciID";
                 listBoxTedarikci.DataSource = dataModel.TedarikciListele();
-                listBoxTumTedarikci.ValueMember = "TedarikciID";
-                listBoxTumTedarikci.DataSource = dataModel.TedarikciListele();
             }
             else
             {
                 List<string> list = new List<string>();
                 list.Add("Henüz tedarikci eklenmedi.");
                 listBoxTedarikci.DataSource = list;
+            }
+            if (dataModel.TumTedarikciListele().Count != 0)
+            {
+                listBoxTumTedarikci.ValueMember = "TedarikciID";
+                listBoxTumTedarikci.DataSource = dataModel.TumTedarikciListele();
+            }
+            else
+            {
+                List<string> list = new List<string>();
+                list.Add("Henüz tedarikci eklenmedi.");
                 listBoxTumTedarikci.DataSource = list;
             }
             buttonSifirla_Click();
@@ -100,21 +108,29 @@ namespace UrunYonet
                 listBoxTedarikci.DisplayMember = "Adi";
                 listBoxTedarikci.ValueMember = "TedarikciID";
                 listBoxTedarikci.DataSource = dataModel.TedarikciListele();
-                listBoxTumTedarikci.ValueMember = "TedarikciID";
-                listBoxTumTedarikci.DataSource = dataModel.TedarikciListele();
             }
             else
             {
                 List<string> list = new List<string>();
                 list.Add("Henüz tedarikci eklenmedi.");
                 listBoxTedarikci.DataSource = list;
+            }
+            if (dataModel.TumTedarikciListele().Count!=0)
+            {
+                listBoxTumTedarikci.ValueMember = "TedarikciID";
+                listBoxTumTedarikci.DataSource = dataModel.TumTedarikciListele();
+            }
+            else
+            {
+                List<string> list = new List<string>();
+                list.Add("Henüz tedarikci eklenmedi.");
                 listBoxTumTedarikci.DataSource = list;
             }
         }
 
         private void listBoxTedarikci_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxTedarikci.SelectedItem!=null)
+            if (listBoxTedarikci.SelectedItem!=null && listBoxTedarikci.SelectedValue.ToString() != "Henüz tedarikci eklenmedi.")
             {
                 List<Tedarikci> tedarikcis = dataModel.TedarikciListele(Convert.ToInt32(listBoxTedarikci.SelectedValue));
                 foreach (Tedarikci Tedarikci in tedarikcis)
@@ -180,6 +196,7 @@ namespace UrunYonet
                 MessageBox.Show("Lütfen tedarikçi listesinden tedarikçi seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             TedarikciIslemleri_Load();
+            buttonSifirla_Click();
         }
 
         private void listBoxTumTedarikci_Format(object sender, ListControlConvertEventArgs e)
@@ -191,11 +208,11 @@ namespace UrunYonet
 
         private void buttonGeriAl_Click(object sender, EventArgs e)
         {
-            if (listBoxTumTedarikci.SelectedItem!=null)
+            if (listBoxTumTedarikci.SelectedItem!=null&& listBoxTumTedarikci.SelectedValue.ToString() != "Henüz tedarikci eklenmedi.")
             {
                 dataModel.TedarikciGuncelleGeriAl(Convert.ToInt32(listBoxTumTedarikci.SelectedValue));
                 MessageBox.Show($" Tedarikci başarı ile aktifleştirildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dataModel.TedarikciYapilanIslemEkle(KullaniciGiris.kullaniciID, Convert.ToInt32(listBoxTedarikci.SelectedValue), $"{KullaniciGiris.kullaniciAdi}  {Convert.ToInt32(listBoxTedarikci.SelectedValue)} tedarikçiyi aktifleştirildi.");
+                dataModel.TedarikciYapilanIslemEkle(KullaniciGiris.kullaniciID, Convert.ToInt32(listBoxTumTedarikci.SelectedValue), $"{KullaniciGiris.kullaniciAdi}  {Convert.ToInt32(listBoxTumTedarikci.SelectedValue)} tedarikçiyi aktifleştirildi.");
             }
             else
             {

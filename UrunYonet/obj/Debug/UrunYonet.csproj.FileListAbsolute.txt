@@ -18,3 +18,4 @@ C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.
 C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.SifreBelirle.resources
 C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.KategoriIslemleri.resources
 C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.TedarikciIslemleri.resources
+C:\Users\asus\OneDrive\Documents\GitHub\UrunYonet\UrunYonet\obj\Debug\UrunYonet.UrunIslemleri.resources

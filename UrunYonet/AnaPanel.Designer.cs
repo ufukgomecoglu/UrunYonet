@@ -79,6 +79,7 @@
             this.TSMI_UrunIslemleri.Name = "TSMI_UrunIslemleri";
             this.TSMI_UrunIslemleri.Size = new System.Drawing.Size(92, 20);
             this.TSMI_UrunIslemleri.Text = "Ürün İşlemleri";
+            this.TSMI_UrunIslemleri.Click += new System.EventHandler(this.TSMI_UrunIslemleri_Click);
             // 
             // TSMI_SiparisIslemleri
             // 

@@ -95,6 +95,12 @@
     <Compile Include="TedarikciIslemleri.Designer.cs">
       <DependentUpon>TedarikciIslemleri.cs</DependentUpon>
     </Compile>
+    <Compile Include="UrunIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UrunIslemleri.Designer.cs">
+      <DependentUpon>UrunIslemleri.cs</DependentUpon>
+    </Compile>
     <Compile Include="YapilanIslemlemler.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TedarikciIslemleri.resx">
       <DependentUpon>TedarikciIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UrunIslemleri.resx">
+      <DependentUpon>UrunIslemleri.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

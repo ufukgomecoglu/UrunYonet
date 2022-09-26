@@ -532,6 +532,37 @@ namespace DataAccsessLayer
                 con.Close();
             }
         }
+        public List<Tedarikci> TumTedarikciListele()
+        {
+            try
+            {
+                List<Tedarikci> tedarikcis = new List<Tedarikci>();
+                cmd.CommandText = "SELECT * FROM Tedarikciler ";
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Tedarikci tedarikci = new Tedarikci();
+                    tedarikci.TedarikciID = reader.GetInt32(0);
+                    tedarikci.Adi = reader.GetString(1);
+                    tedarikci.Tel = reader.GetString(2);
+                    tedarikci.Eposta = reader.GetString(3);
+                    tedarikci.YetkiliAdi = reader.GetString(4);
+                    tedarikci.IsDeleted = reader.GetBoolean(5);
+                    tedarikcis.Add(tedarikci);
+                }
+                return tedarikcis;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         public List<Tedarikci> TedarikciListele(int tedarikciID)
         {
             try
